@@ -35,7 +35,8 @@ public class GoJekParkACarService implements GoJekParkingService {
 			object.setFreeSlots(freeSlots);
 			Map<String, Integer> regNoCarSlotMap = object.getRegNoCarSlotMap();
 			Map<String, List<String>> colorCarMap = object.getColorCarMap();
-			regNoCarSlotMap.put(car.getColor(),slot);
+			regNoCarSlotMap.put(car.getRegistrationNo(),slot);
+			object.setRegNoCarSlotMap(regNoCarSlotMap);
 			if (colorCarMap.containsKey(car.getColor())) {
 				List<String> regNoList = colorCarMap.get(car.getColor());
 				colorCarMap.remove(car.getColor());
@@ -48,6 +49,7 @@ public class GoJekParkACarService implements GoJekParkingService {
 				regNoList.add(car.getRegistrationNo());
 				colorCarMap.put(car.getColor(), regNoList);
 			}
+			object.setColorCarMap(colorCarMap);
 			System.out.println(MessageFormat.format(CommonConstant.PARKING_SPACE_BLOCKED, slot + 1,
 					car.getRegistrationNo()));
 		}

@@ -3,9 +3,7 @@ package com.gojek.carparking.main;
 import java.util.HashMap;
 import java.util.Map;
 import com.gojek.carparking.common.ParkingParameter;
-import com.gojek.carparking.service.GoJekParkACarService;
-import com.gojek.carparking.service.GoJekCreateParkingLotService;
-import com.gojek.carparking.service.GoJekParkingService;
+import com.gojek.carparking.service.*;
 
 public class RequestHandler {
 
@@ -27,6 +25,11 @@ public class RequestHandler {
 
 		commandMap.put("create_parking_lot", new GoJekCreateParkingLotService());
 		commandMap.put("park", new GoJekParkACarService());
+		commandMap.put("leave", new GoJekLeaveParkingService());
+//		commandMap.put("status", new GoJekParkingStatusService());
+		commandMap.put("registration_numbers_for_cars_with_colour", new GoJekRegistrationNoByColorService());
+//		commandMap.put("slot_numbers_for_cars_with_colour", new GoJekParkingLotByColorService());
+		commandMap.put("slot_number_for_registration_number", new GoJekParkingLotByRegistrationNoService());
 	}
 
 }
