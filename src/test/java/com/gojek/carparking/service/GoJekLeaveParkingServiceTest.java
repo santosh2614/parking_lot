@@ -8,40 +8,40 @@ import org.junit.Test;
 
 public class GoJekLeaveParkingServiceTest {
 
-	GoJekLeaveParkingService leaveParkingService;
+    GoJekLeaveParkingService leaveParkingService;
 
-	private GoJekParkACarService parkingService;
+    private GoJekParkACarService parkingService;
 
-	private GoJekCreateParkingLotService service;
+    private GoJekCreateParkingLotService service;
 
-	@Before
-	public void setUp() throws Exception {
-		leaveParkingService = new GoJekLeaveParkingService();
-		parkingService = new GoJekParkACarService();
-		service = new GoJekCreateParkingLotService();
-	}
+    @Before
+    public void setUp() throws Exception {
+        leaveParkingService = new GoJekLeaveParkingService();
+        parkingService = new GoJekParkACarService();
+        service = new GoJekCreateParkingLotService();
+    }
 
-	@After
-	public void tearDown() throws Exception {
-		CarParkingLot.setCarParkingLotProcessor(null);
-	}
+    @After
+    public void tearDown() throws Exception {
+        CarParkingLot.setCarParkingLotProcessor(null);
+    }
 
-	@Test
-	public void testDoAction() {
+    @Test
+    public void testDoAction() {
 
-		ParkingParameter param = new ParkingParameter();
-		param.setValue(new String[] { "create_parking_lot", "6" });
-		service.doAction(param);
+        ParkingParameter param = new ParkingParameter();
+        param.setValue(new String[]{"create_parking_lot", "6"});
+        service.doAction(param);
 
-		param.setValue(new String[] { "park", "KA-01-HH-1234", "White" });
-		parkingService.doAction(param);
+        param.setValue(new String[]{"park", "KA-01-HH-1234", "White"});
+        parkingService.doAction(param);
 
-		param.setValue(new String[] { "leave", "1" });
-		leaveParkingService.doAction(param);
+        param.setValue(new String[]{"leave", "1"});
+        leaveParkingService.doAction(param);
 
-		param.setValue(new String[] { "park", "KA-01-HH-1235", "White" });
-		parkingService.doAction(param);
+        param.setValue(new String[]{"park", "KA-01-HH-1235", "White"});
+        parkingService.doAction(param);
 
-	}
+    }
 
 }

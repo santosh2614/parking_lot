@@ -13,27 +13,27 @@ import static org.junit.Assert.assertTrue;
 
 public class GoJekParkingLotServiceTest {
 
-	private GoJekCreateParkingLotService service;
+    private GoJekCreateParkingLotService service;
 
-	@Before
-	public void setUp() throws Exception {
-		service = new GoJekCreateParkingLotService();
-	}
+    @Before
+    public void setUp() throws Exception {
+        service = new GoJekCreateParkingLotService();
+    }
 
-	@After
-	public void tearDown() throws Exception {
-		CarParkingLot.setCarParkingLotProcessor(null);
-	}
+    @After
+    public void tearDown() throws Exception {
+        CarParkingLot.setCarParkingLotProcessor(null);
+    }
 
-	@Test
-	public void testDoAction() {
-		int maxSize = 6;
-		ParkingParameter param = new ParkingParameter();
-		param.setValue(new String[] { "create_parking_lot", "6" });
-		service.doAction(param);
-		Integer availablity = CarParkingLot.getCarParkingLotProcessor().getAvailability();
-		assertTrue(maxSize == availablity);
+    @Test
+    public void testDoAction() {
+        int maxSize = 6;
+        ParkingParameter param = new ParkingParameter();
+        param.setValue(new String[]{"create_parking_lot", "6"});
+        service.doAction(param);
+        Integer availablity = CarParkingLot.getCarParkingLotProcessor().getAvailability();
+        assertTrue(maxSize == availablity);
 
-	}
+    }
 
 }

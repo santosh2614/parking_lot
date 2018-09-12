@@ -16,39 +16,32 @@ import static org.junit.Assert.assertTrue;
 
 public class GoJekParkACarServiceTest {
 
-	private GoJekCreateParkingLotService lotService;
-	
-	private GoJekParkACarService service;
+    private GoJekCreateParkingLotService lotService;
 
-	@Before
-	public void setUp() throws Exception {
-		service = new GoJekParkACarService();
-		lotService = new GoJekCreateParkingLotService();
-	}
+    private GoJekParkACarService service;
 
-	@After
-	public void tearDown() throws Exception {
-		CarParkingLot.setCarParkingLotProcessor(null);
-	}
+    @Before
+    public void setUp() throws Exception {
+        service = new GoJekParkACarService();
+        lotService = new GoJekCreateParkingLotService();
+    }
 
-	@Test
-	public void testDoAction() {
-		
-		ParkingParameter param = new ParkingParameter();
-		param.setValue(new String[] { "create_parking_lot", "6" });
-		lotService.doAction(param);
-	
-		param.setValue(new String[] { "park", "KA-01-HH-1234", "White" });
-		service.doAction(param);
-		int availablity = CarParkingLot.getCarParkingLotProcessor().getAvailability();
-		Assert.assertEquals( 5, availablity);
-	}
+    @After
+    public void tearDown() throws Exception {
+        CarParkingLot.setCarParkingLotProcessor(null);
+    }
 
-//	@Test
-//	public void tesPakingFull() {
-//		ParkingParameter param = new ParkingParameter();
-//		param.setValue(new String[] { "park", "KA-01-HH-9999", "Blue" });
-//		service.doAction(param);
-//	}
+    @Test
+    public void testDoAction() {
+
+        ParkingParameter param = new ParkingParameter();
+        param.setValue(new String[]{"create_parking_lot", "6"});
+        lotService.doAction(param);
+
+        param.setValue(new String[]{"park", "KA-01-HH-1234", "White"});
+        service.doAction(param);
+        int availablity = CarParkingLot.getCarParkingLotProcessor().getAvailability();
+        Assert.assertEquals(5, availablity);
+    }
 
 }
