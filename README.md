@@ -50,14 +50,15 @@ slot_number_for_registration_number MH-04-AY-1111
 #Project Requirements
 
 1. JDK 1.8
+2. Maven
 
 #Install dependencies and run tests
-bin/setup
+./bin/setup
 
 To run the program and launch the shell:
-bin/parking_lot
+./bin/parking_lot
 
 Press exit to exit from the shell
 
 To run the code so it accepts input from a file:
-bin/parking_lot file_inputs.txt
+./bin/parking_lot file_inputs.txt
